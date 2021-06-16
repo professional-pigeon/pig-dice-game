@@ -1,8 +1,7 @@
-
+//business logic
 
 let storedRoll = 0
 let playerTotal = 0
-let playerTotal2 = 0
 let diceRoll = 0
 let turn = 0
 
@@ -16,6 +15,7 @@ function hide1(diceRoll){
   if(diceRoll === 1){
     storedRoll = 0
     turn = 1
+    $("#turn").html(player2.name)
   }
 }
 function hold1() {
@@ -34,6 +34,7 @@ function hide2(diceRoll){
   if(diceRoll === 1){
     storedRoll = 0
     turn = 0
+    $("#turn").html(player1.name)
   }
 }
 function hold2() {
@@ -58,17 +59,30 @@ $(document).ready(function() {
   $("#namePlayer1").html(player1.name)
   $("#playerTotal2").html(player2.playerTotal)
   $("#namePlayer2").html(player2.name)
+  $("#storedRoll").html(storedRoll)
+  $("#turn").html(player1.name)
 
 
   $("button#hold").click(function() {
     if (turn === 0) {
       hold1();
       $("#playerTotal1").html(player1.playerTotal);
-      turn = 1 
+      if (player1.playerTotal >= 100) {
+        alert(player1.name + " wins")
+        } else {
+          turn = 1;
+          $("#turn").html(player2.name)
+        }
+      
       } else {
         hold2();
         $("#playerTotal2").html(player2.playerTotal);
-        turn = 0
+        if (player2.playerTotal >= 100) {
+          alert(player2.name + " wins")
+        } else {
+          turn = 0;
+          $("#turn").html(player1.name)
+        }
       }
   });
     
@@ -76,11 +90,11 @@ $(document).ready(function() {
     if (turn === 0) {
       rollDice1();
       $("#rollPlayer1").html(diceRoll);
+      $("#storedRoll").html(storedRoll);
     } else {
       rollDice2();
-      console.log(storedRoll)
       $("#rollPlayer2").html(diceRoll);
+      $("#storedRoll2").html(storedRoll);
     }
   });
-
 });
