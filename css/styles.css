@@ -12,7 +12,21 @@
 .roll .hold {
   margin-left: auto;
   margin-right: auto;
+  position: absolute;
+  bottom: 50px;
   width: 75%;
   padding: 5px;
 }
 
+.turnborder {
+  width: 100%;
+  border-spacing: 1px;
+  border-bottom: solid grey;
+  border-bottom-width: 5px;
+  background-color: whitesmoke;
+  box-sizing: border-box;
+}
+
+.centertext {
+  text-align: center;
+}

@@ -98,3 +98,26 @@ $(document).ready(function() {
     }
   });
 });
+
+// combined functions
+
+/* 
+Player.prototype.hold() = function() {
+  this.playerTotal = this.playerTotal + storedRoll
+  storedRoll = 0
+  turn = 1
+}
+
+function Players(player) {
+  this.Group = player.name
+}
+
+function Player(name, diceRoll, playerTotal) {
+  this.name = name
+  this.diceRoll = diceRoll
+  this.playerTotal = playerTotal
+}
+
+let player1 = new Player("Humans", diceRoll, playerTotal)
+let player2 = new Player("Pigs", diceRoll, playerTotal)
+*/
