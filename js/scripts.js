@@ -1,25 +1,45 @@
-// business logic
+
 
 let storedRoll = 0
 let playerTotal = 0
+let playerTotal2 = 0
 let diceRoll = 0
 let turn = 0
 
-function rollDice() {
+//Player 1:
+function rollDice1() {
   diceRoll = Math.floor(Math.random() * 6) + 1;
   storedRoll = diceRoll + storedRoll
-  hide(diceRoll)
+  hide1(diceRoll)
 }
-
-function hide(diceRoll){
+function hide1(diceRoll){
   if(diceRoll === 1){
     storedRoll = 0
+    turn = 1
   }
 }
-
-function hold() {
-	playerTotal = playerTotal + storedRoll
+function hold1() {
+	player1.playerTotal = player1.playerTotal + storedRoll
   storedRoll = 0
+  turn = 1
+}
+
+//Player 2:
+function rollDice2() {
+  diceRoll = Math.floor(Math.random() * 6) + 1;
+  storedRoll = diceRoll + storedRoll
+  hide2(diceRoll)
+}
+function hide2(diceRoll){
+  if(diceRoll === 1){
+    storedRoll = 0
+    turn = 0
+  }
+}
+function hold2() {
+	player2.playerTotal = player2.playerTotal + storedRoll
+  storedRoll = 0
+  turn = 0
 }
 
 function Player(name, diceRoll, playerTotal) {
@@ -34,40 +54,33 @@ let player2 = new Player("Pigs", diceRoll, playerTotal)
 
 
 $(document).ready(function() {
-  $("#totalPlayer1").html(player1.playerTotal)
+  $("#playerTotal1").html(player1.playerTotal)
   $("#namePlayer1").html(player1.name)
-  $("#totalPlayer2").html(player2.playerTotal)
+  $("#playerTotal2").html(player2.playerTotal)
   $("#namePlayer2").html(player2.name)
 
-  if (turn === 0) {
-    $("button#hold").click(function(){
-      hold();
-      $("#totalPlayer1").html(playerTotal);
-      turn = 1
-  });
-    
-    $("button#roll").click(function(){
-      rollDice();
-      if (diceRoll === 1) {
-        turn = 1
-      }
-    $("#rollPlayer1").html(diceRoll);
-  });
 
-  } else if (turn === 1) {
-    $("button#hold").click(function(){
-      hold();
-      $("#totalPlayer2").html(player2.playerTotal);
-      if (diceRoll === 1) {
+  $("button#hold").click(function() {
+    if (turn === 0) {
+      hold1();
+      $("#playerTotal1").html(player1.playerTotal);
+      turn = 1 
+      } else {
+        hold2();
+        $("#playerTotal2").html(player2.playerTotal);
         turn = 0
       }
-    });
-    $("button#roll").click(function(){
-      rollDice();
-      console.log(diceRoll)
+  });
+    
+  $("button#roll").click(function(){
+    if (turn === 0) {
+      rollDice1();
+      $("#rollPlayer1").html(diceRoll);
+    } else {
+      rollDice2();
+      console.log(storedRoll)
       $("#rollPlayer2").html(diceRoll);
-      turn = 0
-    });
-  }
+    }
+  });
 
 });
