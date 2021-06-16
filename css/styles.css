@@ -1,0 +1,16 @@
+.p1name {
+  float: left;
+  padding: 100px;
+}
+
+.p2name {
+  float: right;
+  padding: 100px;
+}
+
+.roll .hold {
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  padding: 5px;
+}
