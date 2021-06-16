@@ -9,12 +9,10 @@
   padding: 100px;
 }
 
-.roll .hold {
-  margin-left: auto;
-  margin-right: auto;
+#roll #hold {
   position: absolute;
-  bottom: 50px;
-  width: 75%;
+  bottom: 5px;
+  width: auto;
   padding: 5px;
 }
 
@@ -29,4 +27,33 @@
 
 .centertext {
   text-align: center;
+}
+
+.column1 {
+  width: 30%;
+  height: auto;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+.column2 {
+  width: 30%;
+  height: auto;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+.column3 {
+  width: 30%;
+  height: auto;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+.buttonsize {
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  display: block;
 }
